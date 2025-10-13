@@ -1,0 +1,8 @@
+.vscode/
+
+# env
+*.env
+.env.*
+
+# for mac
+.DS_Store
