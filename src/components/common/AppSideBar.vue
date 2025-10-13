@@ -70,7 +70,7 @@ const munus = [
   { label: '재고', icon: 'inventory_2', route: '/2' },
   { label: '리포트', icon: 'bar_chart', route: '/3' },
   { label: '직원 관리', icon: 'assignment_ind', route: '/employees' },
-  { label: '테스트 페이지', icon: 'frame_bug', route: '/test' },
+  { label: '모달 테스트', icon: 'frame_bug', route: '/modaltest' },
 ]
 
 const isActive = (path) => route.path === path
