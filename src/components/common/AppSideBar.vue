@@ -1,6 +1,7 @@
 <template>
   <aside
-      class="w-64 flex flex-col shadow-xl border-r transition-colors duration-300 bg-gradient-to-b from-white to-[#f8fafc] dark:from-[#0f172a] dark:to-[#1e293b] border-gray-200 dark:border-gray-800"
+      class="w-64 flex flex-col shadow-xl border-r transition-colors duration-300
+           bg-white dark:bg-[#0f172a] border-gray-100 dark:border-gray-800"
   >
     <!-- 메뉴 -->
     <nav class="flex-1 px-3 py-5 space-y-1">

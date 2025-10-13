@@ -7,9 +7,13 @@
       <RouterView class="flex-1 overflow-y-auto"/>
     </div>
   </div>
+  <!-- Footer -->
+  <AppFooter />
+
 </template>
 
 <script setup>
 import AppHeader from '@/components/common/AppHeader.vue'
 import AppSidebar from '@/components/common/AppSideBar.vue'
+import AppFooter from '@/components/common/AppFooter.vue'
 </script>
