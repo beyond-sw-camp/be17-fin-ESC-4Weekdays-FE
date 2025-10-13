@@ -5,25 +5,30 @@
     <!-- 왼쪽: 로고 + 네비게이션 -->
     <div class="flex items-center gap-6">
       <!-- 로고 -->
-      <a class="flex items-center gap-2 text-zinc-900 dark:text-white" href="#">
+      <RouterLink to="/" class="flex items-center gap-2 text-zinc-900 dark:text-white">
         <span class="material-symbols-outlined text-primary text-2xl"> local_shipping </span>
         <span class="text-2xl font-bold">4Weekdays!</span>
-      </a>
+      </RouterLink>
     </div>
 
     <div class="flex items-center gap-4">
       <div class="flex items-center gap-4">
-      </div>
-      <div
-          class="size-9 rounded-full bg-cover bg-center"
-          style="background-image: url('https://i.pravatar.cc/100')"
-      >
+        <!--        v-if="!auth.isAuthenticated"-->
+        <button
+            @click="ui.openLoginModal"
+            class="text-gray-700 dark:text-gray-200 hover:text-primary"
+        >
+          로그인
+        </button>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
+import {useUIStore} from "@/stores/uiStore.js";
+
+const ui = useUIStore();
 </script>
 
 <style scoped></style>

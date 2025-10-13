@@ -10,10 +10,16 @@
   <!-- Footer -->
   <AppFooter />
 
+  <!-- 로그인 모달창 -->
+  <LoginModal v-if="ui.isLoginModalOpen"/>
 </template>
 
 <script setup>
 import AppHeader from '@/components/common/AppHeader.vue'
 import AppSidebar from '@/components/common/AppSideBar.vue'
 import AppFooter from '@/components/common/AppFooter.vue'
+import LoginModal from '@/components/auth/LoginModal.vue'
+import {useUIStore} from "@/stores/uiStore.js";
+
+const ui = useUIStore();
 </script>
