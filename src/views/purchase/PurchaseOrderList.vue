@@ -33,6 +33,10 @@
           </span>
         </RouterLink>
       </template>
+      <template #cell-amount="{ row }">
+        {{ formatWon(row.amount) }}
+      </template>
+
       <!-- 상태 컬럼 -->
       <template #cell-status="{ row }">
         <BadgeComp :color="getStatusColor(row.status)" :label="getStatusLabel(row.status)" />
@@ -44,11 +48,13 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { getStatusLabel, getStatusColor } from '@/utils/statusMapper.js'
+import {formatWon} from "@/utils/format.js";
 import AppPageLayout from '@/layouts/AppPageLayout.vue'
 import ButtonComp from '@/components/common/ButtonComp.vue'
 import BadgeComp from '@/components/common/BadgeComp.vue'
 import SearchBarComp from '@/components/common/SearchBarComp.vue'
 import TableComp from '@/components/common/TableComp.vue'
+
 
 // 상태
 const query = ref('')
@@ -84,28 +90,28 @@ const orders = ref([
     id: 'PO-2023001',
     supplier: 'Supplier A',
     date: '2023-01-15',
-    amount: '$1,500.00',
+    amount: 1500000,
     status: 'Pending',
   },
   {
     id: 'PO-2023002',
     supplier: 'Supplier B',
     date: '2023-02-20',
-    amount: '$2,200.00',
+    amount: 2200000,
     status: 'Approved',
   },
   {
     id: 'PO-2023003',
     supplier: 'Supplier C',
     date: '2023-03-10',
-    amount: '$800.00',
+    amount: 80000000,
     status: 'Shipped',
   },
   {
     id: 'PO-2023004',
     supplier: 'Supplier A',
     date: '2023-04-05',
-    amount: '$3,000.00',
+    amount: 300000000,
     status: 'Received',
   },
 ])
