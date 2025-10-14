@@ -1,6 +1,5 @@
 <template>
   <AppPageLayout>
-    <!-- 상단 제어 영역 -->
     <template #header>
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div>
