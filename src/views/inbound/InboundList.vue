@@ -36,7 +36,7 @@
     <TableComp :columns="columns" :data="filteredInbounds">
       <!-- 입고 번호 컬럼 -->
       <template #cell-id="{ row }">
-        <RouterLink :to="`/inbound/${row.id}`">
+        <RouterLink :to="`/inbound/detail`">
           <span class="text-primary font-semibold">
             {{ row.id }}
           </span>

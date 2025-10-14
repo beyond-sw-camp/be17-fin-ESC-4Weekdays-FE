@@ -1,5 +1,6 @@
 import InboundList from "@/views/inbound/InboundList.vue";
 import InboundCreate from "@/views/inbound/InboundCreate.vue";
+import InboundDetail from '@/views/inbound/InboundDetail.vue'
 
 const inboundRoutes = [
     {
@@ -15,7 +16,7 @@ const inboundRoutes = [
     {
         path: '/inbound/detail',
         name: 'inboundDetail',
-        component: null,
+        component: InboundDetail,
     },
 ]
 
