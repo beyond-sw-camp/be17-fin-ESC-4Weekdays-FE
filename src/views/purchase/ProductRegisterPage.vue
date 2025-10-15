@@ -1,199 +1,160 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-gray-50">
-    <main class="flex-1 flex justify-center p-10">
-      <div class="w-full max-w-5xl bg-white shadow rounded-2xl p-8 relative">
-        <!-- 우상단 카테고리 추가 버튼 -->
+  <AppPageLayout>
+    <!-- 상단 헤더 -->
+    <template #header>
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-semibold text-gray-800">상품 등록</h1>
         <button
           @click="openCategoryModal"
-          class="absolute top-6 right-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
         >
           + 카테고리 추가
         </button>
+      </div>
+    </template>
 
-        <h1 class="text-2xl font-semibold mb-8 text-gray-800">상품 등록</h1>
-
-        <!-- 상품 등록 폼 -->
-        <form @submit.prevent="registerProduct" class="space-y-6">
+    <!-- 본문 콘텐츠 -->
+    <div class="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-900 shadow rounded-2xl p-8 relative">
+      <form @submit.prevent="registerProduct" class="space-y-6">
+        <!-- 상품 코드 + 상품명 + 원가 -->
+        <div class="grid grid-cols-3 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">상품 코드</label>
+            <input
+              v-model="form.productCode"
+              type="text"
+              placeholder="상품 코드를 입력하세요"
+              class="w-full border rounded px-3 py-2"
+            />
+          </div>
           <div>
             <label class="block text-gray-700 font-medium mb-2">상품명</label>
             <input
               v-model="form.productName"
               type="text"
-              class="w-full border rounded px-3 py-2"
               placeholder="상품명을 입력하세요"
+              class="w-full border rounded px-3 py-2"
             />
           </div>
-
-          <div>
-            <label class="block text-gray-700 font-medium mb-2">상품 카테고리</label>
-            <div class="grid grid-cols-3 gap-3">
-              <select
-                v-model="form.categoryLarge"
-                @change="loadMedium"
-                class="border rounded px-3 py-2"
-              >
-                <option value="">대분류 선택</option>
-                <option v-for="opt in categories.large" :key="opt" :value="opt">{{ opt }}</option>
-              </select>
-              <select
-                v-model="form.categoryMedium"
-                @change="loadSmall"
-                class="border rounded px-3 py-2"
-              >
-                <option value="">중분류 선택</option>
-                <option v-for="opt in mediumOptions" :key="opt" :value="opt">{{ opt }}</option>
-              </select>
-              <select v-model="form.categorySmall" class="border rounded px-3 py-2">
-                <option value="">소분류 선택</option>
-                <option v-for="opt in smallOptions" :key="opt" :value="opt">{{ opt }}</option>
-              </select>
-            </div>
-          </div>
-
           <div>
             <label class="block text-gray-700 font-medium mb-2">가격 정보</label>
-            <div class="grid grid-cols-4 gap-3">
-              <input
-                v-model="form.costPrice"
-                type="number"
-                placeholder="원가"
-                class="border rounded px-3 py-2"
-              />
-              <input
-                v-model="form.listPrice"
-                type="number"
-                placeholder="정가"
-                class="border rounded px-3 py-2"
-              />
-              <input
-                v-model="form.wholesalePrice"
-                type="number"
-                placeholder="도매가"
-                class="border rounded px-3 py-2"
-              />
-              <input
-                v-model="form.marginRate"
-                type="number"
-                placeholder="이익률(%)"
-                class="border rounded px-3 py-2"
-              />
-            </div>
+            <input
+              v-model="form.costPrice"
+              type="number"
+              placeholder="가격을 입력하세요"
+              class="w-full border rounded px-3 py-2"
+            />
           </div>
+        </div>
 
-          <div class="grid grid-cols-2 gap-6">
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">규격</label>
-              <input
-                v-model="form.specification"
-                type="text"
-                placeholder="예: 500ml, Box 20개입"
-                class="w-full border rounded px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">유통기한</label>
-              <input
-                v-model="form.expirationAt"
-                type="date"
-                class="w-full border rounded px-3 py-2"
-              />
-            </div>
+        <!-- 카테고리 -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">상품 카테고리</label>
+          <div class="grid grid-cols-3 gap-3">
+            <select v-model="form.categoryLarge" @change="loadMedium" class="border rounded px-3 py-2">
+              <option value="">대분류 선택</option>
+              <option v-for="opt in categories.large" :key="opt" :value="opt">{{ opt }}</option>
+            </select>
+            <select v-model="form.categoryMedium" @change="loadSmall" class="border rounded px-3 py-2">
+              <option value="">중분류 선택</option>
+              <option v-for="opt in mediumOptions" :key="opt" :value="opt">{{ opt }}</option>
+            </select>
+            <select v-model="form.categorySmall" class="border rounded px-3 py-2">
+              <option value="">소분류 선택</option>
+              <option v-for="opt in smallOptions" :key="opt" :value="opt">{{ opt }}</option>
+            </select>
           </div>
+        </div>
 
-          <div class="grid grid-cols-2 gap-6">
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">원산지</label>
-              <input
-                v-model="form.originCountry"
-                type="text"
-                placeholder="예: 대한민국"
-                class="w-full border rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label class="block text-gray-700 font-medium mb-2">통화</label>
-              <select v-model="form.currency" class="w-full border rounded px-3 py-2">
-                <option>KRW</option>
-                <option>USD</option>
-                <option>JPY</option>
-              </select>
-            </div>
+        <!-- 규격 & 유통기한 -->
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">규격</label>
+            <input
+              v-model="form.specification"
+              type="text"
+              placeholder="예: 500ml, Box 20개입"
+              class="w-full border rounded px-3 py-2"
+            />
           </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">유통기한</label>
+            <input v-model="form.expirationAt" type="date" class="w-full border rounded px-3 py-2" />
+          </div>
+        </div>
 
-          <div class="flex justify-end space-x-3 mt-8">
-            <button type="button" @click="resetForm" class="bg-gray-200 px-5 py-2 rounded">
-              취소
-            </button>
-            <button
-              type="submit"
-              class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700"
-            >
-              등록
-            </button>
+        <!-- 원산지 & 통화 -->
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">원산지</label>
+            <input
+              v-model="form.originCountry"
+              type="text"
+              placeholder="예: 대한민국"
+              class="w-full border rounded px-3 py-2"
+            />
           </div>
-        </form>
-      </div>
-    </main>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">통화</label>
+            <select v-model="form.currency" class="w-full border rounded px-3 py-2">
+              <option>KRW</option>
+              <option>USD</option>
+              <option>JPY</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 버튼 -->
+        <div class="flex justify-end space-x-3 mt-8">
+          <button type="button" @click="resetForm" class="bg-gray-200 px-5 py-2 rounded">
+            취소
+          </button>
+          <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">
+            등록
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <template #footer>
+      <div class="text-center text-sm text-gray-500">© 2025 4Weekdays WMS Platform</div>
+    </template>
 
     <!-- 카테고리 추가 모달 -->
     <ModalComp v-if="showModal" title="카테고리 추가" @close="showModal = false">
       <div class="p-4 space-y-4">
-        <input
-          v-model="newCategory.large"
-          type="text"
-          class="w-full border rounded px-3 py-2"
-          placeholder="대분류 이름"
-        />
-        <input
-          v-model="newCategory.medium"
-          type="text"
-          class="w-full border rounded px-3 py-2"
-          placeholder="중분류 이름"
-        />
-        <input
-          v-model="newCategory.small"
-          type="text"
-          class="w-full border rounded px-3 py-2"
-          placeholder="소분류 이름"
-        />
+        <input v-model="newCategory.large" type="text" class="w-full border rounded px-3 py-2" placeholder="대분류 이름" />
+        <input v-model="newCategory.medium" type="text" class="w-full border rounded px-3 py-2" placeholder="중분류 이름" />
+        <input v-model="newCategory.small" type="text" class="w-full border rounded px-3 py-2" placeholder="소분류 이름" />
         <div class="flex justify-end space-x-2 mt-4">
           <button @click="showModal = false" class="bg-gray-200 px-4 py-2 rounded">취소</button>
-          <button @click="addCategory" class="bg-blue-600 text-white px-4 py-2 rounded">
-            추가
-          </button>
+          <button @click="addCategory" class="bg-blue-600 text-white px-4 py-2 rounded">추가</button>
         </div>
       </div>
     </ModalComp>
-
-    <AppFooter />
-  </div>
+  </AppPageLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import AppHeader from '@/components/common/AppHeader.vue'
-import AppFooter from '@/components/common/AppFooter.vue'
+import AppPageLayout from '@/layouts/AppPageLayout.vue'
 import ModalComp from '@/components/common/ModalComp.vue'
 
-// form
 const form = ref({
+  productCode: '',
   productName: '',
   categoryLarge: '',
   categoryMedium: '',
   categorySmall: '',
   costPrice: '',
-  listPrice: '',
-  wholesalePrice: '',
-  marginRate: '',
   currency: 'KRW',
   specification: '',
   expirationAt: '',
   originCountry: '',
 })
 
-// 카테고리 mock
 const categories = ref({
   large: ['식품', '생활용품', '전자제품'],
   medium: {
@@ -226,7 +187,6 @@ const loadSmall = () => {
   smallOptions.value = categories.value.small[form.value.categoryMedium] || []
 }
 
-// 카테고리 추가 모달 관련
 const showModal = ref(false)
 const newCategory = ref({ large: '', medium: '', small: '' })
 
@@ -257,7 +217,6 @@ const addCategory = () => {
   showModal.value = false
 }
 
-// 등록 API
 const registerProduct = async () => {
   try {
     await axios.post('/api/product', form.value)
@@ -271,14 +230,12 @@ const registerProduct = async () => {
 
 const resetForm = () => {
   form.value = {
+    productCode: '',
     productName: '',
     categoryLarge: '',
     categoryMedium: '',
     categorySmall: '',
     costPrice: '',
-    listPrice: '',
-    wholesalePrice: '',
-    marginRate: '',
     currency: 'KRW',
     specification: '',
     expirationAt: '',
@@ -286,9 +243,3 @@ const resetForm = () => {
   }
 }
 </script>
-
-<style scoped>
-main {
-  min-height: calc(100vh - 100px);
-}
-</style>
