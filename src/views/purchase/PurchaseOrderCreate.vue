@@ -56,7 +56,8 @@
       <div>
         <h2 class="text-lg font-semibold mb-3 text-slate-900 dark:text-white">품목 목록</h2>
 
-        <TableComp :columns="itemColumns" :data="form.items" empty-text="등록된 품목이 없습니다.">
+        <TableComp :columns="itemColumns"
+                   :data="form.items" empty-text="등록된 품목이 없습니다.">
           <template #cell-quantity="{ row }">
             <span class="block text-right font-mono">{{ row.quantity }}</span>
           </template>

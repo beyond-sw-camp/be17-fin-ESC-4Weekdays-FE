@@ -3,6 +3,7 @@ import purchaseOrderRoutes from '@/router/purchaseOrderRoutes.js'
 import ModalTest from "@/views/sandbox/ModalTest.vue";
 import inboundRoutes from "@/router/inboundRoutes.js";
 import productRoutes from '@/router/productRoutes.js';
+import outboundRoutes from '@/router/outboundRoutes.js';
 
 const routes = [
     {
@@ -15,7 +16,8 @@ const routes = [
     },
     ...purchaseOrderRoutes,
     ...inboundRoutes,
-    ...productRoutes
+    ...productRoutes,
+    ...outboundRoutes
 ]
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

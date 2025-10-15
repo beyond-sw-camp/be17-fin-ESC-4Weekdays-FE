@@ -93,7 +93,7 @@ const munus = [
   {label: 'Dashboard', icon: 'dashboard', route: '/'},
   {label: '발주', icon: 'assignment', route: '/purchase'},
   {label: '입고', icon: 'inventory', route: '/inbound'},
-  {label: '출고', icon: 'local_shipping', route: '/1'},
+  {label: '출고', icon: 'local_shipping', route: '/outbound'},
   {label: '재고', icon: 'inventory_2', route: '/2'},
   {label: '리포트', icon: 'bar_chart', route: '/3'},
   {label: '직원 관리', icon: 'assignment_ind', route: '/employees'},
