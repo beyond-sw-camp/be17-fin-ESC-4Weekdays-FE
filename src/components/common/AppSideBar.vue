@@ -74,6 +74,7 @@ const munus = [
   { label: '재고', icon: 'inventory_2', route: '/2' },
   { label: '리포트', icon: 'bar_chart', route: '/3' },
   { label: '직원 관리', icon: 'assignment_ind', route: '/employees' },
+  { label: '작업 관리', icon: 'task', route: '/task/list' },
   { label: '모달 테스트', icon: 'frame_bug', route: '/modaltest' },
   { label: '테스트', icon: 'frame_bug', route: '/test' },
   { label: '상품 등록', icon: 'Shop', route: '/product/register' },
