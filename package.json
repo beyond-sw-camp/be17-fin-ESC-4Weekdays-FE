@@ -16,6 +16,7 @@
     "@motionone/vue": "^10.16.4",
     "chart.js": "^4.5.1",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "axios": "^1.12.2",
     "material-symbols": "^0.36.3",
     "pinia": "^3.0.3",
     "recharts": "^3.2.1",
