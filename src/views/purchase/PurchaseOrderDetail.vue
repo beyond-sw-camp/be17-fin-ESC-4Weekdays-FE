@@ -1,6 +1,6 @@
 <template>
   <AppPageLayout>
-    <!-- 상단 헤더 -->
+    <!-- 헤더 -->
     <template #header>
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div>

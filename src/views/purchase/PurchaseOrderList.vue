@@ -1,15 +1,25 @@
 <template>
   <AppPageLayout>
     <!-- 상단 제어 영역 -->
-    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-6">
-      <!-- 신규 발주 버튼 -->
-      <RouterLink to="/purchase/create">
-        <ButtonComp color="primary" icon="add">신규 발주</ButtonComp>
-      </RouterLink>
+    <template #header>
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold text-slate-900 dark:text-white">발주 관리</h1>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">발주 내역을 조회하고 관리합니다</p>
+        </div>
+        <!-- 신규 발주 버튼 -->
+        <div class="flex items-center gap-3">
+          <!-- 신규 입고 버튼 -->
+          <RouterLink to="/purchase/create" class="w-40">
+            <ButtonComp color="primary" icon="add">신규 발주</ButtonComp>
+          </RouterLink>
 
-      <!-- 검색창 -->
-      <SearchBarComp v-model="query" placeholder="발주서 검색..." @search="handleSearch" />
-    </div>
+          <!-- 검색창 -->
+          <SearchBarComp v-model="query" placeholder="발주서 검색..." @search="handleSearch" />
+        </div>
+
+      </div>
+    </template>
 
     <!-- 필터 버튼 영역 -->
     <div class="flex flex-wrap items-center gap-3 mb-8">

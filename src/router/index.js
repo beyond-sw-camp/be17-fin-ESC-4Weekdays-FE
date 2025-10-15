@@ -1,20 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import purchaseOrderRoutes from '@/router/purchaseOrderRoutes.js'
-import productRoutes from '@/router/productRoutes.js'
-import ModalTest from '@/views/sandbox/ModalTest.vue'
+import ModalTest from "@/views/sandbox/ModalTest.vue";
+import inboundRoutes from "@/router/inboundRoutes.js";
 
 const routes = [
-  {
-    path: '/modaltest',
-    component: ModalTest,
-  },
-  ...purchaseOrderRoutes,
-  ...productRoutes,
+    {
+        path: "/modaltest",
+        component: ModalTest
+    },
+    {
+        path: "/test",
+        component: ModalTest
+    },
+    ...purchaseOrderRoutes,
+    ...inboundRoutes
 ]
-
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes,
 })
 
 export default router
