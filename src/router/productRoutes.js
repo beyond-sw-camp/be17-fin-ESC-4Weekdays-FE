@@ -1,4 +1,4 @@
-import ProductRegisterPage from '@/views/purchase/ProductRegisterPage.vue'
+import ProductRegisterPage from '@/views/product/ProductRegisterPage.vue'
 
 export default [
   {
