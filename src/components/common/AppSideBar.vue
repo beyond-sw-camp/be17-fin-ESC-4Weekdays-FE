@@ -99,6 +99,7 @@ const munus = [
   {label: '직원 관리', icon: 'assignment_ind', route: '/employees'},
   {label: '모달 테스트', icon: 'frame_bug', route: '/modaltest'},
   {label: '테스트', icon: 'frame_bug', route: '/test'},
+  { label: '상품 등록', icon: 'Shop', route: '/product/register' },
 ]
 
 const isActive = (path) => route.path === path
