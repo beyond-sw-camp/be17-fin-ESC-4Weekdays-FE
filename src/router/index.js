@@ -7,6 +7,7 @@ import productRoutes from '@/router/productRoutes.js';
 import outboundRoutes from "@/router/outboundRoutes.js";
 import stockList from '@/router/stockRoutes.js'
 import taskRoutes from '@/router/taskRoutes.js'
+import employeeRoutes from './employeeRoutes';
 
 const routes = [
     {
@@ -23,7 +24,8 @@ const routes = [
     ...stockList,
     ...productRoutes,
     ...outboundRoutes,
-    ...taskRoutes
+    ...taskRoutes,
+    ...employeeRoutes
 ]
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
