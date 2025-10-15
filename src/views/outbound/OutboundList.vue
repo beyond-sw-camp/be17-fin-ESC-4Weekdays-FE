@@ -57,7 +57,7 @@
 
       <!-- 상태 컬럼 -->
       <template #cell-status="{ row }">
-        <BadgeComp :label="statusLabel(row.status)" :type="statusColor(row.status)" />
+        <BadgeComp :label="getStatusLabel(row.status)" :type="getStatusColor(row.status)" />
       </template>
     </TableComp>
   </AppPageLayout>
@@ -65,6 +65,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { getStatusLabel, getStatusColor } from '@/utils/statusMapper.js'
 import AppPageLayout from '@/layouts/AppPageLayout.vue'
 import TableComp from '@/components/common/TableComp.vue'
 import BadgeComp from '@/components/common/BadgeComp.vue'

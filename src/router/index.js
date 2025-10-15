@@ -6,6 +6,7 @@ import dashboardRoutes from './dashboardRoutes';
 import productRoutes from '@/router/productRoutes.js';
 import outboundRoutes from "@/router/outboundRoutes.js";
 import stockList from '@/router/stockRoutes.js'
+import taskRoutes from '@/router/taskRoutes.js'
 import employeeRoutes from './employeeRoutes';
 
 const routes = [
@@ -23,6 +24,7 @@ const routes = [
     ...stockList,
     ...productRoutes,
     ...outboundRoutes,
+    ...taskRoutes,
     ...employeeRoutes
 ]
 const router = createRouter({
