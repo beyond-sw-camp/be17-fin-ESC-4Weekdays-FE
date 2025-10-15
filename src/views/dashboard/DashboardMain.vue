@@ -23,19 +23,19 @@
 
             <!-- 요약 카드 -->
             <div class="grid grid-cols-3 gap-6">
-                <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow p-6 text-center">
+                <div class="bg-white rounded-xl shadow p-6 text-center">
                     <h2 class="text-gray-700 text-sm font-medium mb-2">입고 건수</h2>
                     <p class="text-4xl font-bold text-blue-700">4,280건</p>
                     <p class="text-sm text-green-600 mt-1">▲ +3.8% (전일 대비)</p>
                 </div>
 
-                <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl shadow p-6 text-center">
+                <div class="bg-white rounded-xl shadow p-6 text-center">
                     <h2 class="text-gray-700 text-sm font-medium mb-2">출고 건수</h2>
                     <p class="text-4xl font-bold text-green-700">3,960건</p>
                     <p class="text-sm text-red-600 mt-1">▼ -1.5% (전일 대비)</p>
                 </div>
 
-                <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl shadow p-6 text-center">
+                <div class="bg-white rounded-xl shadow p-6 text-center">
                     <h2 class="text-gray-700 text-sm font-medium mb-2">총 발주 금액</h2>
                     <p class="text-4xl font-bold text-yellow-700">₩9,450,000,000</p>
                     <p class="text-sm text-green-600 mt-1">▲ +5.2% (전일 대비)</p>
@@ -79,15 +79,15 @@
 
                 <!-- 요약 카드 -->
                 <div class="grid grid-cols-3 gap-6">
-                    <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl shadow p-5 text-center">
+                    <div class="bg-white rounded-xl shadow p-6 text-center">
                         <h3 class="text-gray-700 text-sm font-medium mb-1">전체 반품률</h3>
                         <p class="text-3xl font-bold text-red-600">4.2%</p>
                     </div>
-                    <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl shadow p-5 text-center">
+                    <div class="bg-white rounded-xl shadow p-6 text-center">
                         <h3 class="text-gray-700 text-sm font-medium mb-1">총 반품 건수</h3>
                         <p class="text-3xl font-bold text-orange-600">312건</p>
                     </div>
-                    <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl shadow p-5 text-center">
+                    <div class="bg-white rounded-xl shadow p-6 text-center">
                         <h3 class="text-gray-700 text-sm font-medium mb-1">총 취소 건수</h3>
                         <p class="text-3xl font-bold text-yellow-600">158건</p>
                     </div>

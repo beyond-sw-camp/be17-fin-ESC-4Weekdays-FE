@@ -18,7 +18,7 @@ const routes = [
     },
     ...purchaseOrderRoutes,
     ...inboundRoutes,
-    ...dashboardRoutes
+    ...dashboardRoutes,
     ...stockList,
     ...productRoutes,
     ...outboundRoutes
