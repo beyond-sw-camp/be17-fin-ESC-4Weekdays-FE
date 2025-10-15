@@ -6,14 +6,15 @@
         <div>
           <h1 class="text-2xl font-semibold text-slate-900 dark:text-white">발주</h1>
         </div>
-        <ButtonComp color="secondary" icon="arrow_back" @click="$router.back()">뒤로가기</ButtonComp>
+        <ButtonComp color="secondary" icon="arrow_back" @click="$router.back()"
+          >뒤로가기</ButtonComp
+        >
       </div>
     </template>
 
     <!-- 본문 -->
     <section
-        class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
-             rounded-xl shadow-sm p-6 md:p-8 backdrop-blur-sm space-y-8"
+      class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-sm p-6 md:p-8 backdrop-blur-sm space-y-8"
     >
       <!-- 공급자 / 날짜 -->
       <div class="space-y-5">
@@ -21,12 +22,8 @@
         <label class="flex flex-col gap-1.5">
           <span class="text-xs font-medium text-slate-700 dark:text-slate-200">공급자</span>
           <select
-              v-model="form.supplier"
-              class="form-select w-full h-10 px-3 text-sm rounded-md
-             bg-background-light dark:bg-background-dark
-             border border-primary/20 dark:border-primary/30
-             focus:ring-2 focus:ring-primary/50 focus:border-primary
-             outline-none transition-all text-slate-800 dark:text-white"
+            v-model="form.supplier"
+            class="form-select w-full h-10 px-3 text-sm rounded-md bg-background-light dark:bg-background-dark border border-primary/20 dark:border-primary/30 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-800 dark:text-white"
           >
             <option disabled value="">공급자 선택</option>
             <option v-for="s in supplierList" :key="s.id" :value="s.id">{{ s.name }}</option>
@@ -38,26 +35,18 @@
           <label class="flex flex-col gap-1.5">
             <span class="text-xs font-medium text-slate-700 dark:text-slate-200">발주일</span>
             <input
-                v-model="form.orderDate"
-                type="date"
-                class="w-full h-10 px-3 text-sm rounded-md
-               bg-background-light dark:bg-background-dark
-               border border-primary/20 dark:border-primary/30
-               focus:ring-2 focus:ring-primary/50 focus:border-primary
-               outline-none transition-all text-slate-800 dark:text-white"
+              v-model="form.orderDate"
+              type="date"
+              class="w-full h-10 px-3 text-sm rounded-md bg-background-light dark:bg-background-dark border border-primary/20 dark:border-primary/30 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-800 dark:text-white"
             />
           </label>
 
           <label class="flex flex-col gap-1.5">
             <span class="text-xs font-medium text-slate-700 dark:text-slate-200">입고 예정일</span>
             <input
-                v-model="form.expectedDate"
-                type="date"
-                class="w-full h-10 px-3 text-sm rounded-md
-               bg-background-light dark:bg-background-dark
-               border border-primary/20 dark:border-primary/30
-               focus:ring-2 focus:ring-primary/50 focus:border-primary
-               outline-none transition-all text-slate-800 dark:text-white"
+              v-model="form.expectedDate"
+              type="date"
+              class="w-full h-10 px-3 text-sm rounded-md bg-background-light dark:bg-background-dark border border-primary/20 dark:border-primary/30 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-slate-800 dark:text-white"
             />
           </label>
         </div>
@@ -84,10 +73,10 @@
 
           <template #actions="{ index }">
             <ButtonComp
-                color="danger"
-                icon="delete"
-                class="!px-2 !py-1"
-                @click="removeItem(index)"
+              color="danger"
+              icon="delete"
+              class="!px-2 !py-1"
+              @click="removeItem(index)"
             />
           </template>
         </TableComp>
@@ -109,9 +98,7 @@
       </div>
 
       <!-- 하단 버튼 -->
-      <div
-          class="flex justify-end gap-3 pt-6 rounded-b-xl"
-      >
+      <div class="flex justify-end gap-3 pt-6 rounded-b-xl">
         <ButtonComp color="secondary" @click="$router.back()">취소</ButtonComp>
         <ButtonComp color="primary" @click="savePurchase">저장</ButtonComp>
       </div>
@@ -124,7 +111,7 @@ import { ref, computed } from 'vue'
 import AppPageLayout from '@/layouts/AppPageLayout.vue'
 import ButtonComp from '@/components/common/ButtonComp.vue'
 import TableComp from '@/components/common/TableComp.vue'
-import { formatWon } from "@/utils/format.js";
+import { formatWon } from '@/utils/format.js'
 
 // TableComp 컬럼 정의
 const itemColumns = [
@@ -137,7 +124,7 @@ const itemColumns = [
 
 // 총합 계산
 const totalAmount = computed(() =>
-    form.value.items.reduce((sum, i) => sum + i.quantity * i.unitPrice, 0)
+  form.value.items.reduce((sum, i) => sum + i.quantity * i.unitPrice, 0),
 )
 
 // 품목 삭제
@@ -155,7 +142,6 @@ const addItem = (item) => {
   form.value.items.push(item)
   isAddItemModalOpen.value = false
 }
-
 
 // 테스트 데이터
 const supplierList = ref([
