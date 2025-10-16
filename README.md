@@ -1,23 +1,32 @@
-# new-project
+<h1 align="center">🎟️ ESC</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+  <img src="./docs/raw.png" width="400" alt="ESC 로고" />
 
-## Recommended IDE Setup
+<h3 align="center">2팀 - 4Weekdays</h3>
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+<br /><br />
 
-## Recommended Browser Setup
+## 👨‍💻 팀원 구성
+<table align="center">
+  <tr>
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+[팀원 이미지]()
 
-## Customize configuration
+  </tr>
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 📘 프로젝트 기획서
+<table align="center">
+  <tr>
+
+[🔗프로젝트 기획서](https://github.com/beyond-sw-camp/be17-fin-ESC-4Weekdays-BE/tree/main/docs/ESC_요구사항_정의서_4Weekdays.pdf)
+
+## 🖥️ 시스템 아키텍쳐
+<table align="center">
+  <img src="./docs/시스템 아키텍쳐.png" width="400" alt="ESC 로고" />
+
+## 화면 설계서
+[🔗화면 설계서(figma)](https://www.figma.com/design/3VoI4uiK22G8sYgli5Eijz/ESC_4WeekDays?node-id=0-1&t=utTqOXOI4A3VjwGC-1)
 
 ## Project Setup
 
