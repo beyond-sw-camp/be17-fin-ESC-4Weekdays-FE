@@ -30,6 +30,9 @@
 
         <!-- 데이터 테이블 -->
         <TableComp :columns="columns" :data="filteredEmployees">
+            <template #cell-name="{ row }">
+                <RouterLink to="/employee/detail" class="text-sky-500 hover:underline">{{ row.name }}</RouterLink>
+            </template>
             <!-- 상태 컬럼 -->
             <template #cell-status="{ row }">
                 <BadgeComp :color="getStatusColor(row.status)" :label="getStatusLabel(row.status)" />
@@ -70,7 +73,7 @@ const employees = ref([
         name: '김철수',
         phone: '010-1234-5678',
         position: '사원',
-        role: '일반직원',
+        role: 'WORKER',
         status: 'active', // ✅ 재직
     },
     {
@@ -78,7 +81,7 @@ const employees = ref([
         name: '이영희',
         phone: '010-2345-6789',
         position: '대리',
-        role: '관리자',
+        role: 'ADMINE',
         status: 'active', // ✅ 재직
     },
     {
@@ -86,7 +89,7 @@ const employees = ref([
         name: '박민수',
         phone: '010-3456-7890',
         position: '과장',
-        role: '일반직원',
+        role: 'WORKER',
         status: 'leave', // ✅ 휴직
     },
     {
@@ -94,7 +97,7 @@ const employees = ref([
         name: '정수진',
         phone: '010-4567-8901',
         position: '차장',
-        role: '관리자',
+        role: 'ADMINE',
         status: 'inactive', // ✅ 퇴사
     },
     {
@@ -102,7 +105,7 @@ const employees = ref([
         name: '김철수',
         phone: '010-9876-5432',
         position: '부장',
-        role: '관리자',
+        role: 'MASTER',
         status: 'active', // ✅ 재직
     },
 ])

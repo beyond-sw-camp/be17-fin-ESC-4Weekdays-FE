@@ -16,27 +16,13 @@
           <ButtonComp color="secondary" icon="arrow_back" @click="$router.back()">
             뒤로가기
           </ButtonComp>
-          <ButtonComp
-            v-if="inbound.status === 'draft'"
-            color="primary"
-            icon="check_circle"
-            @click="startInbound"
-          >
+          <ButtonComp v-if="inbound.status === 'draft'" color="primary" icon="check_circle" @click="startInbound">
             입고 시작
           </ButtonComp>
-          <ButtonComp
-            v-if="inbound.status === 'in_progress'"
-            color="primary"
-            icon="done_all"
-            @click="completeInbound"
-          >
+          <ButtonComp v-if="inbound.status === 'in_progress'" color="primary" icon="done_all" @click="completeInbound">
             입고 완료
           </ButtonComp>
-          <ButtonComp
-            v-if="inbound.status !== 'completed'"
-            color="secondary"
-            icon="edit"
-          >
+          <ButtonComp v-if="inbound.status !== 'completed'" color="secondary" icon="edit">
             수정
           </ButtonComp>
           <ButtonComp color="secondary" icon="print">인쇄</ButtonComp>
@@ -47,10 +33,8 @@
     <!-- 본문 -->
     <section class="space-y-8">
       <!-- 입고 정보 -->
-      <div
-        class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
-               rounded-xl shadow-sm p-6 backdrop-blur-sm"
-      >
+      <div class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
+               rounded-xl shadow-sm p-6 backdrop-blur-sm">
         <h2 class="text-lg font-semibold mb-4 text-slate-900 dark:text-white">입고 정보</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
@@ -65,11 +49,8 @@
           <!-- 연결된 발주서 -->
           <div class="flex justify-between md:block">
             <span class="text-xs text-slate-500 dark:text-slate-400 mb-1 block">연결된 발주서</span>
-            <RouterLink
-              v-if="inbound.purchaseOrderId"
-              to="/purchase/detail"
-              class="text-sm font-medium text-primary hover:underline"
-            >
+            <RouterLink v-if="inbound.purchaseOrderId" to="/purchase/detail"
+              class="text-sm font-medium text-primary hover:underline">
               {{ inbound.purchaseOrderId }}
             </RouterLink>
             <span v-else class="text-sm font-medium text-zinc-400">-</span>
@@ -108,10 +89,8 @@
           <!-- 비고 -->
           <div class="col-span-1 md:col-span-2 lg:col-span-3 pt-2">
             <span class="text-xs text-slate-500 dark:text-slate-400 mb-1 block">비고</span>
-            <div
-              class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-700
-                     bg-background-light dark:bg-zinc-900 text-sm text-zinc-700 dark:text-zinc-300"
-            >
+            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-700
+                     bg-background-light dark:bg-zinc-900 text-sm text-zinc-700 dark:text-zinc-300">
               {{ inbound.notes || '비고 없음' }}
             </div>
           </div>
@@ -119,10 +98,8 @@
       </div>
 
       <!-- 입고 품목 -->
-      <div
-        class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
-               rounded-xl shadow-sm p-6 backdrop-blur-sm"
-      >
+      <div class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
+               rounded-xl shadow-sm p-6 backdrop-blur-sm">
         <h2 class="text-lg font-semibold mb-4 text-slate-900 dark:text-white">입고 품목</h2>
 
         <!-- 품목 테이블 -->
@@ -162,11 +139,8 @@
       </div>
 
       <!-- 검수 정보 (입고 진행 중이거나 완료된 경우) -->
-      <div
-        v-if="inbound.status !== 'draft'"
-        class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
-               rounded-xl shadow-sm p-6 backdrop-blur-sm"
-      >
+      <div v-if="inbound.status !== 'draft'" class="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-700
+               rounded-xl shadow-sm p-6 backdrop-blur-sm">
         <h2 class="text-lg font-semibold mb-4 text-slate-900 dark:text-white">검수 정보</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-4">
