@@ -54,14 +54,13 @@ import TableComp from '@/components/common/TableComp.vue'
 const query = ref('')
 
 // 필터 버튼
-const filters = ['부서', '직책', '권한', '상태']
+const filters = ['부서', '권한', '상태']
 
 // 테이블 컬럼
 const columns = [
     { key: 'email', label: '이메일', width: '20%' },
     { key: 'name', label: '이름', width: '10%' },
     { key: 'phone', label: '전화번호', width: '15%', align: 'center' },
-    { key: 'position', label: '직책', width: '10%', align: 'center' },
     { key: 'role', label: '권한', width: '10%', align: 'center' },
     { key: 'status', label: '상태', width: '10%', align: 'center' },
 ]
