@@ -2,84 +2,95 @@
     <AppPageLayout>
         <!-- 헤더 -->
         <template #header>
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-semibold text-gray-800">신규 직원 등록</h1>
-                <button @click="$router.push('/employee')"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded">
-                    목록으로
-                </button>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div>
+                    <h1 class="text-2xl font-semibold text-slate-900 dark:text-white">신규 입고</h1>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">새로운 입고를 등록합니다</p>
+                </div>
+                <ButtonComp color="secondary" icon="arrow_back" @click="$router.back()">뒤로가기</ButtonComp>
             </div>
         </template>
 
         <!-- 회원 등록 폼 -->
-        <form @submit.prevent="registerUser" class="space-y-6 max-w-3xl mx-auto mt-8">
+        <form @submit.prevent="registerUser" class="max-w-xl mx-auto mt-8">
+            <div class="bg-white rounded-lg border border-gray-200 p-8">
+                <div class="space-y-5">
+                    <!-- 이메일 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">이메일</label>
+                        <div class="flex gap-2">
+                            <input v-model="form.email" type="email" required
+                                class="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                                placeholder="example@company.com" />
+                            <ButtonComp color="primary" size="sm" type="button" @click="checkEmailDuplicate">
+                                중복확인
+                            </ButtonComp>
+                        </div>
+                    </div>
 
-            <!-- 🔹 주요 항목 (한 줄씩) -->
-            <div class="grid grid-cols-1 gap-6">
-                <!-- 이메일 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">이메일</label>
-                    <input v-model="form.email" type="email" class="w-full border rounded px-3 py-2"
-                        placeholder="이메일 주소를 입력하세요" />
+                    <!-- 비밀번호 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">비밀번호</label>
+                        <input v-model="form.password" type="password" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                            placeholder="8자 이상 입력하세요" />
+                    </div>
+
+                    <!-- 비밀번호 확인 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">비밀번호 확인</label>
+                        <input v-model="form.passwordConfirm" type="password" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                            placeholder="비밀번호를 다시 입력하세요" />
+                    </div>
+
+                    <!-- 이름 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">이름</label>
+                        <input v-model="form.name" type="text" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                            placeholder="홍길동" />
+                    </div>
+
+                    <!-- 전화번호 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">전화번호</label>
+                        <input v-model="form.phone" type="text" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                            placeholder="010-1234-5678" />
+                    </div>
+
+                    <!-- 권한 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">권한</label>
+                        <select v-model="form.role" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 bg-white">
+                            <option value="">선택하세요</option>
+                            <option value="master">MASTER</option>
+                            <option value="admin">ADMIN</option>
+                            <option value="staff">WORKER</option>
+                        </select>
+                    </div>
+
+                    <!-- 상태 -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">상태</label>
+                        <select v-model="form.status" required
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 bg-white">
+                            <option value="">선택하세요</option>
+                            <option value="active">재직</option>
+                            <option value="leave">휴직</option>
+                            <option value="inactive">퇴사</option>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- 비밀번호 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">비밀번호</label>
-                    <input v-model="form.password" type="password" class="w-full border rounded px-3 py-2"
-                        placeholder="비밀번호를 입력하세요" />
+                <!-- 버튼 영역 -->
+                <div class="mt-8">
+                    <ButtonComp color="primary" size="lg" type="submit" class="w-full justify-center">
+                        직원 등록
+                    </ButtonComp>
                 </div>
-
-                <!-- 이름 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">이름</label>
-                    <input v-model="form.name" type="text" class="w-full border rounded px-3 py-2"
-                        placeholder="이름을 입력하세요" />
-                </div>
-
-                <!-- 전화번호 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">전화번호</label>
-                    <input v-model="form.phone" type="text" class="w-full border rounded px-3 py-2"
-                        placeholder="010-0000-0000" />
-                </div>
-            </div>
-
-            <!-- 🔹 부 항목 (두 줄 나란히) -->
-            <div class="grid grid-cols-2 gap-6">
-                <!-- 직책 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">직책</label>
-                    <input v-model="form.position" type="text" class="w-full border rounded px-3 py-2"
-                        placeholder="예: 사원, 대리, 과장" />
-                </div>
-
-                <!-- 권한 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">권한</label>
-                    <select v-model="form.role" class="w-full border rounded px-3 py-2">
-                        <option value="master">MASTER</option>
-                        <option value="admin">ADMIN</option>
-                        <option value="staff">WORKER</option>
-                    </select>
-                </div>
-
-                <!-- 상태 -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">상태</label>
-                    <select v-model="form.status" class="w-full border rounded px-3 py-2">
-                        <option value="active">재직</option>
-                        <option value="leave">휴직</option>
-                        <option value="inactive">퇴사</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- 등록 버튼 -->
-            <div class="flex justify-end mt-6">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded">
-                    등록
-                </button>
             </div>
         </form>
     </AppPageLayout>
@@ -87,25 +98,28 @@
 
 <script setup>
 import AppPageLayout from '@/layouts/AppPageLayout.vue'
+import ButtonComp from '@/components/common/ButtonComp.vue'
 import { ref } from 'vue'
 
-// ✅ 기본 폼 데이터
 const form = ref({
     email: '',
     password: '',
+    passwordConfirm: '',
     name: '',
     phone: '',
     position: '',
-    role: 'staff',
+    role: '',
     joinDate: '',
-    status: 'active',
+    status: '',
 })
 
-// ✅ 등록 함수
-const registerUser = () => {
-    // 가입일시 자동 등록
-    form.value.joinDate = new Date().toISOString()
+const checkEmailDuplicate = () => {
+    console.log('이메일 중복 확인:', form.value.email)
+    alert('사용 가능한 이메일입니다.')
+}
 
+const registerUser = () => {
+    form.value.joinDate = new Date().toISOString()
     console.log('등록된 사용자 데이터:', form.value)
     alert('회원 등록이 완료되었습니다!')
 }
